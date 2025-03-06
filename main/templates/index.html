@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <title>Главная</title>
+  <!-- Если используете Django static -->
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+  <header>
+    <h1>Микроблог с регистрацией через Telegram</h1>
+  </header>
+
+  <section>
+    <p>Добро пожаловать в наш микроблог! Здесь вы можете быстро завести учётную запись через Telegram.</p>
+    <!-- Ссылка на вашего телеграм-бота -->
+    <a class="btn" href="https://t.me/ваш_бот_username">Регистрация</a>
+  </section>
+
+  <section>
+    <h2>Вход по токену</h2>
+    <!-- Форма отправляет POST-запрос на ваш обработчик логина -->
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      <label for="token">Токен, выданный ботом:</label>
+      <input type="text" id="token" name="token" required>
+      <button type="submit">Войти</button>
+    </form>
+  </section>
+</body>
+</html>

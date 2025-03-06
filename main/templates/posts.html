@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <title>Посты</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+  <header>
+    <h1>Все посты</h1>
+  </header>
+
+  <!-- Секция со списком постов -->
+  <section class="posts-list">
+    {% for post in posts %}
+      <article class="post">
+        <h2>{{ post.title }}</h2>
+        <p class="meta">
+          Автор: {{ post.author.telegram_nickname }} |
+          Дата: {{ post.created_at }} |
+          Лайки: {{ post.likes }}
+        </p>
+        <div class="post-text">
+          {{ post.text }}
+        </div>
+      </article>
+    {% empty %}
+      <p>Пока нет ни одного поста.</p>
+    {% endfor %}
+  </section>
+
+  <!-- Секция для создания нового поста -->
+  <section class="post-creation">
+    <h2>Создать пост</h2>
+    <form method="post" action="{% url 'posts' %}">
+      {% csrf_token %}
+      <div>
+        <label for="title">Заголовок:</label>
+        <input type="text" id="title" name="title" required>
+      </div>
+      <div>
+        <label for="text">Текст:</label>
+        <textarea id="text" name="text" rows="4" required></textarea>
+      </div>
+      <button type="submit">Отправить</button>
+    </form>
+  </section>
+</body>
+</html>
