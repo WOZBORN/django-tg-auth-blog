@@ -26,6 +26,7 @@ import json
 with open("config.json", "r") as f:
     config = json.load(f)
     SECRET_KEY = config.get("secret_key")
+    BOT_URL = config.get("bot_url")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -69,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'main.context_processors.global_settings',
             ],
         },
     },

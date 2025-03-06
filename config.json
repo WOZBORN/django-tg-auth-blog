@@ -1,5 +1,6 @@
 {
-  "bot_token": "ваш токен бота",
-  "secret_key": "ваш секретный ключ django",
-  "django_url": "http://127.0.0.1:8000"
+  "bot_token": "тут ваш токен бота",
+  "secret_key": "тут ваш секретный ключ Django",
+  "django_url": "http://127.0.0.1:8000",
+  "bot_url": "https://t.me/zero_bookshop_bot"
 }
